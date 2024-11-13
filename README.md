@@ -1,99 +1,134 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS Application
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A NestJS-based backend application that handles various functionalities such as user authentication, data fetching, and CRUD operations. This application is connected to a PostgreSQL database using Prisma for data management and serves as the backend for your application.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Database Setup](#database-setup)
+- [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
+- [License](#license)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Installation
 
-## Project setup
+Follow these steps to set up the application locally.
 
-```bash
-$ npm install
-```
+### Prerequisites
 
-## Compile and run the project
+- Node.js (version 16.x or later)
+- PostgreSQL
+- Prisma ORM
 
-```bash
-# development
-$ npm run start
+### Steps
 
-# watch mode
-$ npm run start:dev
+1. **Clone the repository**
 
-# production mode
-$ npm run start:prod
-```
+   ```bash
+   git clone https://github.com/your-repo/nest-app.git
+   cd nest-app
+Install dependencies
 
-## Run tests
+Use npm or yarn to install the necessary dependencies.
 
-```bash
-# unit tests
-$ npm run test
+bash
+Copy code
+npm install
+or
 
-# e2e tests
-$ npm run test:e2e
+bash
+Copy code
+yarn install
+Set up environment variables
 
-# test coverage
-$ npm run test:cov
-```
+Create a .env file in the root of the project and add the following environment variables:
 
-## Deployment
+env
+Copy code
+DATABASE_URL=postgresql://username:password@localhost:5432/database_name
+JWT_SECRET=your-jwt-secret-key
+Database setup
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Run the following command to generate the database schema and migrate it:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+bash
+Copy code
+npx prisma migrate dev
+This will generate the database tables and apply any migrations.
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+Environment Variables
+Make sure you have the following environment variables set up:
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Variable	Description
+DATABASE_URL	The connection string for your PostgreSQL database.
+JWT_SECRET	Secret key used for JWT authentication.
+Database Setup
+This project uses Prisma ORM to manage the database. To set up the database:
 
-## Resources
+Make sure PostgreSQL is installed and running.
 
-Check out a few resources that may come in handy when working with NestJS:
+Configure your .env file with your database credentials.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Run the following command to generate the Prisma client:
 
-## Support
+bash
+Copy code
+npx prisma generate
+To migrate the database and apply changes to the schema:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+bash
+Copy code
+npx prisma migrate dev
+Running the Application
+Once everything is set up, you can start the server.
 
-## Stay in touch
+Start the development server:
+bash
+Copy code
+npm run start:dev
+or
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+bash
+Copy code
+yarn start:dev
+This will start the application in development mode, and you should see something like:
 
-## License
+csharp
+Copy code
+[Nest] 1234  - 2024/11/13 08:00:00 AM   "Nest application successfully started"
+Your application should now be running at http://localhost:3000.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Running the Application in Production:
+bash
+Copy code
+npm run start:prod
+This will build the application and run it in production mode.
+
+API Endpoints
+Auth Endpoints
+POST /auth/login: User login endpoint.
+POST /auth/register: User registration endpoint.
+Invoice Endpoints
+GET /invoices: Get a list of invoices (pagination supported).
+
+Query parameters:
+
+page: The page number for pagination (default: 1).
+limit: The number of items per page (default: 10).
+GET /invoices/total: Get the total amount of invoices grouped by due date.
+
+GET /invoices/:id: Get a specific invoice by its ID.
+
+Example Request
+bash
+Copy code
+GET http://localhost:3000/invoices?page=1&limit=10
+Authentication
+The application uses JWT (JSON Web Token) for authentication. To access protected routes, you need to include a valid JWT token in the Authorization header.
+
+Example:
+
+bash
+Copy code
+Authorization: Bearer <your-jwt-token>
